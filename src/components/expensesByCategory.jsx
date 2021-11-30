@@ -1,12 +1,18 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
+import { Helmet } from 'react-helmet'
+import BtnReturn from '../elements/BtnReturn'
+import { Header, Title } from '../elements/header'
 
-const ExpensesByCategory = () => {
-  const a = 0
-
-  return (
-    <h1>Expenses By Category</h1>
-  )
-}
+const ExpensesByCategory = () => (
+  <>
+    <Helmet>
+      <title>Expenses by Category</title>
+    </Helmet>
+    <Header>
+      <BtnReturn route="/" />
+      <Title>Expenses by Category</Title>
+    </Header>
+  </>
+)
 
 export default ExpensesByCategory

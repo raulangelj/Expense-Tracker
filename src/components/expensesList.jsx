@@ -1,12 +1,18 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
+import { Helmet } from 'react-helmet'
+import BtnReturn from '../elements/BtnReturn'
+import { Header, Title } from '../elements/header'
 
-const ExpensesList = () => {
-  const a = 0
-
-  return (
-    <h1>Expenses List</h1>
-  )
-}
+const ExpensesList = () => (
+  <>
+    <Helmet>
+      <title>Expenses History</title>
+    </Helmet>
+    <Header>
+      <BtnReturn route="/" />
+      <Title>Expenses History</Title>
+    </Header>
+  </>
+)
 
 export default ExpensesList

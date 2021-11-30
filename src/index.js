@@ -9,6 +9,7 @@ import LogIn from './components/logIn'
 import ExpensesByCategory from './components/expensesByCategory'
 import ExpensesList from './components/expensesList'
 import EditExpense from './components/editExpense'
+import Background from './elements/background'
 
 const Index = () => (
   <React.StrictMode>
@@ -17,13 +18,14 @@ const Index = () => (
         <Routes>
           <Route exact path="/sign-in" element={<SignIn />} />
           <Route exact path="/log-in" element={<LogIn />} />
-          <Route exact path="/expenses-category" element={<ExpensesByCategory />} />
-          <Route exact path="/expenses-list" element={<ExpensesList />} />
+          <Route exact path="/category" element={<ExpensesByCategory />} />
+          <Route exact path="/history" element={<ExpensesList />} />
           <Route exact path="/edit/:id" element={<EditExpense />} />
           <Route path="/" element={<App />} />
         </Routes>
       </Router>
     </Container>
+    <Background />
   </React.StrictMode>
 )
 
