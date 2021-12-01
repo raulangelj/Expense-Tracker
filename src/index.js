@@ -12,7 +12,7 @@ import EditExpense from './components/editExpense'
 import Background from './elements/background'
 
 const Index = () => (
-  <React.StrictMode>
+  <>
     <Container>
       <Router>
         <Routes>
@@ -26,7 +26,7 @@ const Index = () => (
       </Router>
     </Container>
     <Background />
-  </React.StrictMode>
+  </>
 )
 
 ReactDOM.render(

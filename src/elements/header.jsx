@@ -28,7 +28,7 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
  
-    @media(max-width: 60rem){ /* 950px */
+    @media(max-width: 26.25rem){ /* 420px */
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
