@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Btn from '../elements/btn'
@@ -13,28 +14,61 @@ const Svg = styled(SvgLogIn)`
   margin-bottom: 1.25rem; /* 20px */
 `
 
-const LogIn = () => (
-  <>
-    <Helmet>
-      <title>Log in</title>
-    </Helmet>
-    <Header>
-      <HeaderContainer>
-        <Title>Log in</Title>
-        <div>
-          <Btn to="/sign-in">Sign in</Btn>
-        </div>
-      </HeaderContainer>
-    </Header>
-    <Form autocomplete="nope">
-      <Svg />
-      <Input type="email" name="email" placeholder="Email" autocomplete="new-email" />
-      <Input type="password" name="password" placeholder="Password" autocomplete="new-password" />
-      <BtnContainer>
-        <Btn primario as="button" type="submit">Log In</Btn>
-      </BtnContainer>
-    </Form>
-  </>
-)
+const LogIn = () => {
+  const navigate = useNavigate()
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  })
+
+  const handelChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const login = () => {
+
+  }
+
+  return (
+    <>
+      <Helmet>
+        <title>Log in</title>
+      </Helmet>
+      <Header>
+        <HeaderContainer>
+          <Title>Log in</Title>
+          <div>
+            <Btn to="/sign-in">Sign in</Btn>
+          </div>
+        </HeaderContainer>
+      </Header>
+      <Form autocomplete="nope" onSubmit={login}>
+        <Svg />
+        <Input
+          type="email"
+          name="email"
+          value={user.email}
+          placeholder="Email"
+          autocomplete="new-email"
+          onChange={(e) => handelChange(e)}
+        />
+        <Input
+          type="password"
+          name="password"
+          value={user.password}
+          placeholder="Password"
+          autocomplete="new-password"
+          onChange={(e) => handelChange(e)}
+        />
+        <BtnContainer>
+          <Btn primario as="button" type="submit">Log In</Btn>
+        </BtnContainer>
+      </Form>
+    </>
+  )
+}
 
 export default LogIn

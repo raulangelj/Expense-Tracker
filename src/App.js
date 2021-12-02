@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Helmet } from 'react-helmet' // HELMET PERMITE AGREGAR META DATA EN CADA COMPONENTE
 import Btn from './elements/btn'
@@ -6,7 +7,7 @@ import {
 } from './elements/header'
 
 const App = () => {
-  console.log(process.env)
+  const a = 0
 
   return (
     <>

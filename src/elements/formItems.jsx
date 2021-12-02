@@ -42,7 +42,7 @@ const Input = styled.input`
     font-size: 2.5rem; /* 40px */
     text-transform: uppercase;
     border: none;
-    border-bottom: 2px solid ${theme.grisClaro};
+    border-bottom: 2px solid ${theme.lightGrey};
     outline: none;
  
     @media(max-width: 60rem){ /* 950px */

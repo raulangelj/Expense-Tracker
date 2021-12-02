@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import firebase from 'firebase'
 
 const {
@@ -23,7 +22,7 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig)
 const analytics = firebase.analytics(app)
-const db = app.firestore()
-const auth = app.auth()
+const db = firebase.firestore()
+const auth = firebase.auth()
 
 export { db, auth, analytics }
