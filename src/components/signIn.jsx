@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/named */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
@@ -49,7 +46,7 @@ const SignIn = () => {
     } else {
       // Sign in
       auth.createUserWithEmailAndPassword(user.email, user.password)
-        .then((res) => {
+        .then(() => {
           // console.log(res)
           navigate('/')
         })
@@ -74,7 +71,7 @@ const SignIn = () => {
     timer = setTimeout(() => {
       setErrorMessage('')
       clearTimeout(timer)
-    }, 4000)
+    }, 4000) // WE USE 4 SECS BECAUSE IS THE TIME WE SET THE ANIMATION
   }
 
   return (
