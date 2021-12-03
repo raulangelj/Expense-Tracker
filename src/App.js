@@ -5,6 +5,7 @@ import Btn from './elements/btn'
 import {
   BtnContainer, Header, HeaderContainer, Title,
 } from './elements/header'
+import BtnLogOut from './elements/signOutBtn'
 
 const App = () => {
   const a = 0
@@ -20,7 +21,7 @@ const App = () => {
           <BtnContainer>
             <Btn to="/category">Category</Btn>
             <Btn to="/history">History</Btn>
-            <Btn to="/">X</Btn>
+            <BtnLogOut />
           </BtnContainer>
         </HeaderContainer>
       </Header>

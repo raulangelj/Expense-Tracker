@@ -10,10 +10,11 @@ import ExpensesByCategory from './components/expensesByCategory'
 import ExpensesList from './components/expensesList'
 import EditExpense from './components/editExpense'
 import Background from './elements/background'
+import { AuthProvider } from './context/authContext'
 
 const Index = () => (
-  <>
-    <Container>
+  <Container>
+    <AuthProvider>
       <Router>
         <Routes>
           <Route exact path="/sign-in" element={<SignIn />} />
@@ -24,9 +25,9 @@ const Index = () => (
           <Route path="/" element={<App />} />
         </Routes>
       </Router>
-    </Container>
+    </AuthProvider>
     <Background />
-  </>
+  </Container>
 )
 
 ReactDOM.render(

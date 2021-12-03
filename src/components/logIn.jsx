@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
@@ -52,7 +51,6 @@ const LogIn = () => {
 
   const login = (e) => {
     e.preventDefault()
-    console.log(user)
 
     // VALIDATE DATA
     const exprEmail = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/

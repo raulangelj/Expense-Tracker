@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import PropTypes from 'prop-types'
 import theme from '../theme'
