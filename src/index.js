@@ -11,23 +11,34 @@ import ExpensesList from './components/expensesList'
 import EditExpense from './components/editExpense'
 import Background from './elements/background'
 import { AuthProvider } from './context/authContext'
+import ProtectedRoute from './components/privateRoutes'
 
 const Index = () => (
-  <Container>
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route exact path="/sign-in" element={<SignIn />} />
-          <Route exact path="/log-in" element={<LogIn />} />
-          <Route exact path="/category" element={<ExpensesByCategory />} />
-          <Route exact path="/history" element={<ExpensesList />} />
-          <Route exact path="/edit/:id" element={<EditExpense />} />
-          <Route path="/" element={<App />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+  <>
+    <Container>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route exact path="/sign-in" element={<SignIn />} />
+            <Route exact path="/log-in" element={<LogIn />} />
+            <Route exact path="/category" element={<ProtectedRoute />}>
+              <Route path="/category/" element={<ExpensesByCategory />} />
+            </Route>
+            <Route exact path="/history" element={<ProtectedRoute />}>
+              <Route path="/history/" element={<ExpensesList />} />
+            </Route>
+            <Route exact path="/edit/:id" element={<ProtectedRoute />}>
+              <Route path="/edit/:id/" element={<EditExpense />} />
+            </Route>
+            <Route path="/" element={<ProtectedRoute />}>
+              <Route path="/" element={<App />} />
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </Container>
     <Background />
-  </Container>
+  </>
 )
 
 ReactDOM.render(

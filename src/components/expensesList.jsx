@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useAuth } from '../context/authContext'
@@ -5,9 +6,8 @@ import BtnReturn from '../elements/BtnReturn'
 import { Header, Title } from '../elements/header'
 
 const ExpensesList = () => {
-  console.log('se renderizo expenses list')
   const { user } = useAuth()
-  console.log(user)
+
   return (
     <>
       <Helmet>

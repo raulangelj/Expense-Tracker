@@ -9,6 +9,8 @@ import BtnLogOut from './elements/signOutBtn'
 
 const App = () => {
   const a = 0
+  // eslint-disable-next-line no-console
+  console.log('Render app')
 
   return (
     <>
