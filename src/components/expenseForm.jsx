@@ -6,6 +6,7 @@ import {
 } from '../elements/formItems'
 import { ReactComponent as PlusIcon } from '../assets/plus.svg'
 import Alert from '../elements/alert'
+import SelecteCategorys from './selectCategory'
 
 const ExpenseForm = () => {
   const [alert, setAlert] = useState({
@@ -16,6 +17,7 @@ const ExpenseForm = () => {
   const [expense, setExpense] = useState({
     description: '',
     value: '',
+    category: 'Hogar',
   })
 
   const handleChange = (e) => {
@@ -32,7 +34,9 @@ const ExpenseForm = () => {
   return (
     <Form>
       <FilterCont>
-        <p>Select</p>
+        <SelecteCategorys
+          state={{ expense, setExpense }}
+        />
         <p>Date Picker</p>
       </FilterCont>
       <div>
