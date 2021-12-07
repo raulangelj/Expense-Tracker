@@ -122,7 +122,7 @@ const LogIn = () => {
           onChange={(e) => handelChange(e)}
         />
         <BtnContainer>
-          <Btn primario as="button" type="submit">Log In</Btn>
+          <Btn primary as="button" type="submit">Log In</Btn>
         </BtnContainer>
       </Form>
       {

@@ -111,7 +111,7 @@ const SignIn = () => {
           onChange={(e) => handelChange(e)}
         />
         <BtnContainer>
-          <Btn primario as="button" type="submit">Sign in</Btn>
+          <Btn primary as="button" type="submit">Sign in</Btn>
         </BtnContainer>
       </Form>
       {

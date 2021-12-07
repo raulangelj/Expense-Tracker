@@ -41,12 +41,12 @@ const HeaderContainer = styled.div`
     }
 `
 
-const BtnContainer = styled.div`
+const BtnsContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
 
 export {
-  Header, Title, HeaderContainer, BtnContainer,
+  Header, Title, HeaderContainer, BtnsContainer,
 }
