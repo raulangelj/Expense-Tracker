@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import theme from '../theme'
 import { ReactComponent as DownIcon } from '../assets/down.svg'
 import categories from '../data/categories'
+import IconCategorie from '../elements/categoriesIcon'
 
 const SelectContainer = styled.div`
     background: ${theme.lightGrey};
@@ -93,6 +94,7 @@ const SelecteCategorys = ({ state }) => {
                   data-value={cate.id}
                   onClick={handleClick}
                 >
+                  <IconCategorie id={cate.id} />
                   {cate.text}
 
                 </Option>

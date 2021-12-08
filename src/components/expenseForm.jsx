@@ -7,6 +7,7 @@ import {
 import { ReactComponent as PlusIcon } from '../assets/plus.svg'
 import Alert from '../elements/alert'
 import SelecteCategorys from './selectCategory'
+import DatePicker from './datePicker'
 
 const ExpenseForm = () => {
   const [alert, setAlert] = useState({
@@ -18,6 +19,7 @@ const ExpenseForm = () => {
     description: '',
     value: '',
     category: 'Hogar',
+    date: new Date(),
   })
 
   const handleChange = (e) => {
@@ -37,7 +39,9 @@ const ExpenseForm = () => {
         <SelecteCategorys
           state={{ expense, setExpense }}
         />
-        <p>Date Picker</p>
+        <DatePicker
+          state={{ expense, setExpense }}
+        />
       </FilterCont>
       <div>
         <Input
