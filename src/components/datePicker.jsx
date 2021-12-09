@@ -12,7 +12,7 @@ import theme from '../theme'
 import { months, daysWeekShort } from '../data/dayPickerLanguage'
 
 // CHANGE FOR OTHER LANGUAGE IN DATE
-const locale = es
+const locale = enUS
 
 const parseDate = (str, format) => {
   const parsed = dateFnsParse(str, format, new Date(), { locale })
@@ -61,20 +61,20 @@ const DatePicker = ({ state }) => {
     <InputContainer>
       <DayPicker
         value={date}
-        format="dd 'de' MMMM 'de' yyyy"
-        locale={es}
+        format="MMMM dd',' yyyy" // CHANGE TO TRANSLATE
         formatDate={formatDate}
         parseDate={parseDate}
         onDayChange={(day) => setExpense({
           ...expense,
           date: day,
         })}
-        dayPickerProps={
-          {
-            months,
-            weekdaysShort: daysWeekShort,
-          }
-        }
+        // CHANGE TO TRANSLATE
+        // dayPickerProps={
+        //   {
+        //     months,
+        //     weekdaysShort: daysWeekShort,
+        //   }
+        // }
       />
     </InputContainer>
   )
