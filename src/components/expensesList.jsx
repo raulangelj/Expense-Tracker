@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { useAuth } from '../context/authContext'
 import BtnReturn from '../elements/BtnReturn'
 import { Header, Title } from '../elements/header'
+import ExpensesBar from './barExpenseTotal'
 
 const ExpensesList = () => {
   const { user } = useAuth()
@@ -17,6 +18,7 @@ const ExpensesList = () => {
         <BtnReturn route="/" />
         <Title>Expenses History</Title>
       </Header>
+      <ExpensesBar />
     </>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import BtnReturn from '../elements/BtnReturn'
 import { Header, Title } from '../elements/header'
+import ExpensesBar from './barExpenseTotal'
 
 const ExpensesByCategory = () => (
   <>
@@ -12,6 +13,7 @@ const ExpensesByCategory = () => (
       <BtnReturn route="/" />
       <Title>Expenses by Category</Title>
     </Header>
+    <ExpensesBar />
   </>
 )
 

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { Helmet } from 'react-helmet' // HELMET PERMITE AGREGAR META DATA EN CADA COMPONENTE
+import ExpensesBar from './components/barExpenseTotal'
 import ExpenseForm from './components/expenseForm'
 import Btn from './elements/btn'
 import {
@@ -29,6 +30,7 @@ const App = () => {
         </HeaderContainer>
       </Header>
       <ExpenseForm />
+      <ExpensesBar />
     </>
   )
 }
