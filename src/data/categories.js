@@ -1,10 +1,10 @@
 export default [
-  { id: 'food', text: 'Comida' },
-  { id: 'accounts and payment', text: 'Cuentas y pagos' },
-  { id: 'home', text: 'Hogar' },
-  { id: 'transport', text: 'Transporte' },
-  { id: 'clothes', text: 'Ropa' },
-  { id: 'health', text: 'Salud e Higiene' },
-  { id: 'shopping', text: 'Compras' },
-  { id: 'fun', text: 'Diversion' },
+  { id: 'food', text: 'Food' },
+  { id: 'account & payment', text: 'Account & payment' },
+  { id: 'home', text: 'Home' },
+  { id: 'transport', text: 'Transport' },
+  { id: 'clothes', text: 'Clothes' },
+  { id: 'health', text: 'Health' },
+  { id: 'shopping', text: 'Shopping' },
+  { id: 'fun', text: 'Fun' },
 ]
