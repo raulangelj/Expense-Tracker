@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
@@ -24,6 +24,15 @@ const SignIn = () => {
     password: '',
     password2: '',
   })
+
+  // USE USEEFFECT TO CLEAN THE COMPONENT AFTER THE UNMOUNT
+  useEffect(() => () => {
+    setUser({
+      email: '',
+      password: '',
+      password2: '',
+    })
+  }, [])
 
   const handelChange = (e) => {
     setUser({

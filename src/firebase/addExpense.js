@@ -16,7 +16,7 @@ const addExpense = (expense, userUid) => {
   date = getUnixTime(date)
 
   return db.collection('expenses').add({
-    description,
+    description: `${description[0].toUpperCase()}${description.slice(1).toLowerCase()}`,
     value,
     category,
     date,

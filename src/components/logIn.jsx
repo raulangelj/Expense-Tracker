@@ -26,6 +26,18 @@ const LogIn = () => {
     password: '',
   })
 
+  // USE USEEFFECT TO CLEAN THE COMPONENT AFTER THE UNMOUNT
+  useEffect(() => () => {
+    setUser({
+      email: '',
+      password: '',
+    })
+    setAlert({
+      type: '',
+      message: '',
+    })
+  }, [])
+
   useEffect(() => {
     if (alert.type === 'succes') {
       const timer = setTimeout(() => {
