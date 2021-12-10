@@ -11,8 +11,6 @@ import ExpensesBar from './barExpenseTotal'
 import {
   List,
   ListElement,
-  ListCategories,
-  ListElementCategories,
   CategoryList,
   DescriptionList,
   ValueList,
@@ -32,9 +30,21 @@ import Btn from '../elements/btn'
 
 const ExpensesList = () => {
   const { user } = useAuth()
-  const [allExepense] = useGetExpenses()
+  const [allExepense, getMoreData, moreToload] = useGetExpenses()
   // eslint-disable-next-line no-console
   console.log('history', allExepense)
+
+  const sameDate = (expenses, index, expense) => {
+    if (index !== 0) {
+      const actualDate = expense.date
+      const lastDate = expenses[index - 1].date
+      if (actualDate === lastDate) {
+        return true
+      }
+      return false
+    }
+    return false
+  }
 
   return (
     <>
@@ -48,34 +58,45 @@ const ExpensesList = () => {
       <List>
         {
           allExepense
-          && allExepense.map((expense) => {
+          && allExepense.map((expense, index) => {
             return (
-              <ListElement key={expense.id}>
-                <CategoryList>
-                  <IconCategorie id={expense.category} />
-                  {expense.category}
-                </CategoryList>
-                <DescriptionList>
-                  {expense.description}
-                </DescriptionList>
-                <ValueList>
-                  {formatAmount(expense.value)}
-                </ValueList>
-                <BtnContainerList>
-                  <BtnAccionList as={Link} to={`/edit/${expense.id}`}>
-                    <IconEdit />
-                  </BtnAccionList>
-                  <BtnAccionList>
-                    <IconErase />
-                  </BtnAccionList>
-                </BtnContainerList>
-              </ListElement>
+              <div key={expense.id}>
+                {
+                  !sameDate(allExepense, index, expense)
+                  && <DateList>{expense.date}</DateList>
+                }
+                <ListElement key={expense.id}>
+                  <CategoryList>
+                    <IconCategorie id={expense.category} />
+                    {expense.category}
+                  </CategoryList>
+                  <DescriptionList>
+                    {expense.description}
+                  </DescriptionList>
+                  <ValueList>
+                    {formatAmount(expense.value)}
+                  </ValueList>
+                  <BtnContainerList>
+                    <BtnAccionList as={Link} to={`/edit/${expense.id}`}>
+                      <IconEdit />
+                    </BtnAccionList>
+                    <BtnAccionList>
+                      <IconErase />
+                    </BtnAccionList>
+                  </BtnContainerList>
+                </ListElement>
+              </div>
             )
           })
         }
-        <BtnCenterContainerList>
-          <BtnLoadMoreList>More</BtnLoadMoreList>
-        </BtnCenterContainerList>
+        {
+          moreToload
+          && (
+            <BtnCenterContainerList>
+              <BtnLoadMoreList onClick={getMoreData}>More</BtnLoadMoreList>
+            </BtnCenterContainerList>
+          )
+        }
         {
           allExepense?.length === 0
             && (

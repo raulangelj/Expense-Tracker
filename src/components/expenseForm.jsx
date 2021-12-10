@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Btn from '../elements/btn'
 import {
   FilterCont, Form, Input, LargeInput, BtnContainer,
@@ -24,6 +24,20 @@ const ExpenseForm = () => {
     category: 'Home',
     date: new Date(),
   })
+
+  // USE USEEFFECT TO CLEAN THE COMPONENT AFTER THE UNMOUNT
+  useEffect(() => () => {
+    setExpense({
+      description: '',
+      value: '',
+      category: 'Home',
+      date: new Date(),
+    })
+    setAlert({
+      type: '',
+      message: '',
+    })
+  }, [])
 
   const handleChange = (e) => {
     const numbers = /^(\d{0,10})(\.)?(\d{1,2})?$/g

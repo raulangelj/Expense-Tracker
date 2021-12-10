@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import getUnixTime from 'date-fns/getUnixTime'
-import fromUnixTime from 'date-fns/fromUnixTime'
 import { db } from './firebaseConfig'
 
 //* DATE IS A DATE OBJET AND USES UNIXTIME TO TURN IT INTO SECONS TO SAVE IT
