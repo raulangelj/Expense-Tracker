@@ -27,12 +27,15 @@ import formatAmount from '../functions/coinConverter'
 import { ReactComponent as IconEdit } from '../assets/editar.svg'
 import { ReactComponent as IconErase } from '../assets/borrar.svg'
 import Btn from '../elements/btn'
+import eraseItem from '../firebase/eraseItem'
 
 const ExpensesList = () => {
   const { user } = useAuth()
   const [allExepense, getMoreData, moreToload] = useGetExpenses()
   // eslint-disable-next-line no-console
   console.log('history', allExepense)
+  // ! IT RENDERS THREE TIMES BECAUSE I AM CHANGING 3 STATES
+  // ! FIX THAT WITH MEMO OR ONLY ONE STATE
 
   const sameDate = (expenses, index, expense) => {
     if (index !== 0) {
@@ -80,7 +83,7 @@ const ExpensesList = () => {
                     <BtnAccionList as={Link} to={`/edit/${expense.id}`}>
                       <IconEdit />
                     </BtnAccionList>
-                    <BtnAccionList>
+                    <BtnAccionList onClick={() => eraseItem(expense.id)}>
                       <IconErase />
                     </BtnAccionList>
                   </BtnContainerList>

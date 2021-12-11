@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 import getUnixTime from 'date-fns/getUnixTime'
 import { db } from './firebaseConfig'
 
-//* DATE IS A DATE OBJET AND USES UNIXTIME TO TURN IT INTO SECONS TO SAVE IT
-const addExpense = (expense, userUid) => {
+const editItem = (expense) => {
   const {
-    description, category,
+    description, category, id,
   } = expense
   let { date, value } = expense
   // CONVERT VALUE IN A TWO DECIMAL NUMBER
@@ -14,13 +12,12 @@ const addExpense = (expense, userUid) => {
   // CONVERT THE DATE INTO SECONDS
   date = getUnixTime(date)
 
-  return db.collection('expenses').add({
+  return db.collection('expenses').doc(id).update({
     description: `${description[0].toUpperCase()}${description.slice(1).toLowerCase()}`,
-    value,
+    value: Number(value),
     category,
     date,
-    userUid,
   })
 }
 
-export default addExpense
+export default editItem

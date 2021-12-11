@@ -12,6 +12,7 @@ const formatDate = (date) => format(fromUnixTime(date), "MMMM dd', ' yyyy", { lo
 
 const useGetExpenses = () => {
   // ? CAN IT BE DONE WITH USEMEMO? RIGHT NOW IT RERENDERS TE COMPONENT 3 TIMES
+  // *CHANGE TO ONLY ONE STATE, LAST ITEM WOULD BE OBJECT WITH OTHER NECESARY DATA
   const { user } = useAuth()
   const [allExepenses, setAllExpenses] = useState([])
   const [lastExpense, setLastExpense] = useState()

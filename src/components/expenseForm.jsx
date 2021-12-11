@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router'
 import Btn from '../elements/btn'
 import {
   FilterCont, Form, Input, LargeInput, BtnContainer,
@@ -8,10 +10,12 @@ import { ReactComponent as PlusIcon } from '../assets/plus.svg'
 import Alert from '../elements/alert'
 import SelecteCategorys from './selectCategory'
 import DatePicker from './datePicker'
-import addExpense from '../firebase/addExpense'
+import addItem from '../firebase/addItem'
 import { useAuth } from '../context/authContext'
+import editItem from '../firebase/editItem'
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ item }) => {
+  const navigate = useNavigate()
   const { user } = useAuth()
   const [alert, setAlert] = useState({
     type: '',
@@ -24,6 +28,14 @@ const ExpenseForm = () => {
     category: 'Home',
     date: new Date(),
   })
+
+  ExpenseForm.propTypes = {
+    item: PropTypes.object,
+  }
+
+  ExpenseForm.defaultProps = {
+    item: {},
+  }
 
   // USE USEEFFECT TO CLEAN THE COMPONENT AFTER THE UNMOUNT
   useEffect(() => () => {
@@ -38,6 +50,21 @@ const ExpenseForm = () => {
       message: '',
     })
   }, [])
+
+  useEffect(() => {
+    if (item && Object.keys(item).length > 0) {
+      if (user.uid === item?.userUid) {
+        setExpense({
+          category: item.category,
+          description: item.description,
+          value: item.value,
+          date: item.date,
+        })
+      } else {
+        navigate('/history')
+      }
+    }
+  }, [item, user, navigate])
 
   const handleChange = (e) => {
     const numbers = /^(\d{0,10})(\.)?(\d{1,2})?$/g
@@ -72,30 +99,56 @@ const ExpenseForm = () => {
     }, 4000)
   }
 
+  const cleanStatesOnSuccess = (successMessage) => {
+    setExpense({
+      description: '',
+      value: '',
+      category: 'Home',
+      date: new Date(),
+    })
+    setAlert({
+      type: 'succes',
+      message: successMessage,
+    })
+    clearAlert()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const valid = validateExpense()
     if (valid) {
-      addExpense(expense, user.uid)
-        .then(() => {
-          setExpense({
-            description: '',
-            value: '',
-            category: 'Home',
-            date: new Date(),
-          })
-          setAlert({
-            type: 'succes',
-            message: 'Expense added correctly.',
-          })
-          clearAlert()
+      if (item && Object.keys(item).length > 0) {
+        editItem({
+          ...expense,
+          id: item.id,
         })
-        .catch(() => {
-          setAlert({
-            type: 'error',
-            message: 'Something wrong happended, try again later.',
+          .then(() => {
+            cleanStatesOnSuccess('Item updated succesfully.')
+            const timer = setTimeout(() => {
+              navigate('/history')
+              clearTimeout(timer)
+            }, 1500)
           })
-        })
+          .catch(() => {
+            setAlert({
+              type: 'error',
+              message: 'Something wrong happended, try again later.',
+            })
+            clearAlert()
+          })
+      } else {
+        addItem(expense, user.uid)
+          .then(() => {
+            cleanStatesOnSuccess('Expense added correctly.')
+          })
+          .catch(() => {
+            setAlert({
+              type: 'error',
+              message: 'Something wrong happended, try again later.',
+            })
+            clearAlert()
+          })
+      }
     } else {
       setAlert({
         type: 'error',
@@ -133,7 +186,11 @@ const ExpenseForm = () => {
       </div>
       <BtnContainer>
         <Btn as="button" primary wIcon type="submit">
-          Add Expense
+          {
+            item && Object.keys(item).length > 0
+              ? 'Save Item'
+              : 'Add Expense'
+          }
           <PlusIcon />
         </Btn>
       </BtnContainer>
