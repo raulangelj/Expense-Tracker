@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
+import { useMonthlyAmont } from '../context/monthlyAmountContext'
 import formatAmount from '../functions/coinConverter'
 import theme from '../theme'
 
@@ -23,12 +24,12 @@ const TotalBar = styled.div`
 `
 
 const ExpensesBar = () => {
-  const a = 1540
+  const { totalAmount } = useMonthlyAmont()
 
   return (
     <TotalBar>
       <p>Total expenses in the month:</p>
-      <p>{formatAmount(a)}</p>
+      <p>{formatAmount(totalAmount)}</p>
     </TotalBar>
   )
 }

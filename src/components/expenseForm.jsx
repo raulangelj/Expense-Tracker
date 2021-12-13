@@ -25,7 +25,7 @@ const ExpenseForm = ({ item }) => {
   const [expense, setExpense] = useState({
     description: '',
     value: '',
-    category: 'Home',
+    category: 'home',
     date: new Date(),
   })
 

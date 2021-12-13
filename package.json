@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "date-fns": "^2.27.0",
     "firebase": "^8.4.1",
+    "firebase-tools": "^9.23.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-day-picker": "^7.4.10",
@@ -16,6 +17,7 @@
     "react-router": "^6.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-uuid": "^1.0.2",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
